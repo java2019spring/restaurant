@@ -72,20 +72,24 @@ public class gui_test
 	
 	static void cashier()
 	{
+		String img_path="imgs/cappadocia.jpg";
 		JFrame jframe=new JFrame("Cashier");
+		ImageIcon imageicon=new ImageIcon(img_path);
 		JButton jButton, jButton2,jButton3,jButton4,jButton5;
+		JLabel label_img=new JLabel(imageicon);
 		 jButton = new JButton("中间");
-	        jButton2 = new JButton("北边");
-	        jButton3 = new JButton("西边");
-	        jButton4 = new JButton("东边");
-	        jButton5 = new JButton("南边");
-		jframe.add(jButton, BorderLayout.CENTER);  //布局的中间
-		jframe.add(jButton2, BorderLayout.NORTH);  //布局的北边
-	    jframe.add(jButton3, BorderLayout.WEST);   //布局的西边
-		jframe.add(jButton4, BorderLayout.EAST);   //布局的东边
-		jframe.add(jButton5, BorderLayout.SOUTH);  //布局的南边
-		jframe.setTitle("演示边界布局管理器");
-		jframe.setSize(800,400);
+//	        jButton2 = new JButton("北边");
+//	        jButton3 = new JButton("西边");
+//	        jButton4 = new JButton("东边");
+//	        jButton5 = new JButton("南边");
+//		jframe.add(jButton, BorderLayout.CENTER);  //布局的中间
+//		jframe.add(jButton2, BorderLayout.NORTH);  //布局的北边
+//	    jframe.add(jButton3, BorderLayout.WEST);   //布局的西边
+//		jframe.add(jButton4, BorderLayout.EAST);   //布局的东边
+//		jframe.add(jButton5, BorderLayout.SOUTH);  //布局的南边
+		jframe.add(label_img,BorderLayout.WEST);
+		jframe.setTitle("Cashier");
+		jframe.setSize(800,600);
 		jframe.setLocation(0,0);
 		jframe.setVisible(true);
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
