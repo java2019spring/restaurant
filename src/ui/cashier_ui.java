@@ -9,7 +9,7 @@ import javax.swing.JCheckBox;
 import java.awt.BorderLayout;
 import java.awt.Font;
 
-public class gui_test
+public class cashier_ui
 {
 	
 	static void test_checkbox()
