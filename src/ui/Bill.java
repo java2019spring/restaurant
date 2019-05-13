@@ -37,14 +37,15 @@ public class Bill implements ActionListener
 		JLabel label_tot_price=new JLabel(str_tot_price);
 		Font font = new Font("Serief", Font.ITALIC + Font.BOLD, 30);
 		label_tot_price.setFont(font);
-		label_tot_price.setBounds(460,400,300,100);
+		label_tot_price.setBounds(420,380,300,50);
 		JTextArea bill_textarea=new JTextArea(str_bill);
 		bill_textarea.setEditable(false);
 		bill_textarea.setFont(font);
-		bill_textarea.setBounds(460,100,300,300);
+		bill_textarea.setBounds(460,50,300,200);
+		
 		JButton confirm_button=new JButton("确认");
 		confirm_button.setFont(font);
-		confirm_button.setBounds(500,500,100,50);
+		confirm_button.setBounds(500,400,100,50);
 		confirm_button.addActionListener(this);
 				
 
@@ -84,14 +85,14 @@ public class Bill implements ActionListener
 		JLabel label_tot_price=new JLabel(str_tot_price);
 		Font font = new Font("Serief", Font.ITALIC + Font.BOLD, 30);
 		label_tot_price.setFont(font);
-		label_tot_price.setBounds(460,400,300,100);
+		label_tot_price.setBounds(460,350,300,100);
 		JTextArea bill_textarea=new JTextArea(str_bill);
 		bill_textarea.setEditable(false);
 		bill_textarea.setFont(font);
-		bill_textarea.setBounds(460,100,300,300);
+		bill_textarea.setBounds(460,50,300,300);
 		JButton confirm_button=new JButton("确认");
 		confirm_button.setFont(font);
-		confirm_button.setBounds(500,500,100,50);
+		confirm_button.setBounds(500,450,100,50);
 		confirm_button.addActionListener(this);
 				
 	

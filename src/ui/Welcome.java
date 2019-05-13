@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
-
+import java.awt.event.*;
 
 public class Welcome implements ActionListener
 {
@@ -14,14 +14,19 @@ public class Welcome implements ActionListener
 
 	public void actionPerformed(ActionEvent e)
 	{
-		if(e.getActionCommand()=="start")
+		String action_command=e.getActionCommand();
+		if(action_command=="start")
 		{
 			jframe.remove(jpanel);
 			Bill cashier=new Bill(jframe);
 		}
-		else if(e.getActionCommand()=="exit")
+		else if(action_command=="exit")
 		{
 			System.exit(0);
+		}
+		else if(action_command=="Calculator")
+		{
+			Calculator calculator=new Calculator();
 		}
 	}
 	public static int width = 800, height = 600;
@@ -54,13 +59,7 @@ public class Welcome implements ActionListener
         jframe = new JFrame("Settle Account");
         jpanel=new JPanel();
         
-        jpanel.setSize(width, height);
-        jpanel.setLocation(0, 0);
-        jpanel.setLayout(null);
         
-        jframe.setSize(width, height);
-        jframe.setLocation(0, 0);
-        jframe.setLayout(null);
         // --------------add text --------------
         JLabel title = new JLabel("欢迎使用自助结账！");
         title.setForeground(Color.black);
@@ -92,9 +91,31 @@ public class Welcome implements ActionListener
         JLabel label_2 = new JLabel(imgicon_2);
         jpanel.add(label_2, new Integer(Integer.MIN_VALUE));
         label_2.setBounds(0, height / 2, width / 2, height / 2);
+        
+        JMenuBar menubar=new JMenuBar();
+        jframe.setJMenuBar(menubar);
+        
+        JMenu menu_tools=new JMenu("Tools");
+        JMenuItem menuitem_calc=new JMenuItem("Calculator");
+        menu_tools.add(menuitem_calc);
+        menuitem_calc.addActionListener(this);
+        menuitem_calc.setActionCommand("Calculator");
+
+
+        menubar.add(menu_tools);
+        
+        JMenu menu_help=new JMenu("Help");
+        menubar.add(menu_help);
  
         jpanel.setOpaque(false);
-        //
+        jpanel.setSize(width, height);
+        jpanel.setLocation(0, 0);
+        jpanel.setLayout(null);
+        
+        jframe.setSize(width, height);
+        jframe.setLocation(0, 0);
+        jframe.setLayout(null);
+        
         jframe.add(jpanel);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.setVisible(true);
