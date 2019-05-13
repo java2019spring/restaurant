@@ -2,6 +2,12 @@ package ui;
 
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.JFrame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 
 public class Calculator extends Frame
 {
@@ -101,6 +107,8 @@ public class Calculator extends Frame
 		public void windowClosing(WindowEvent ev)
 		{System.exit(0);}
 		});
+		
+//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setLayout(null);
 		setLocation(850,100);
