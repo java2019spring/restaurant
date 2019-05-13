@@ -2,6 +2,6 @@
 
 主程序从Welcome.java开始
 
-## In Menu
+## In Menu Bar
 
 Calculator
