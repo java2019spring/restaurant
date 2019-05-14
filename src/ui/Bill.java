@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
-
+import ui.Plate_util;
 
 public class Bill implements ActionListener
 {
