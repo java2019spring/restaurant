@@ -32,12 +32,15 @@ public class Account  implements ActionListener
 	{
     	final JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        fc.setFileFilter(new FileFilter() {
-            public String getDescription() {
+        fc.setFileFilter(new FileFilter() 
+        {
+            public String getDescription() 
+            {
                 return ".jpg";
             }
 
-            public boolean accept(File f) {
+            public boolean accept(File f) 
+            {
                 return f.isDirectory() || f.getName().toLowerCase().endsWith(".jpg");
             }
         });
@@ -49,7 +52,8 @@ public class Account  implements ActionListener
 		{
 			int returnVal = fc.showOpenDialog(f);
             File file = fc.getSelectedFile();
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
+            if (returnVal == JFileChooser.APPROVE_OPTION) 
+            {
                 JOptionPane.showMessageDialog(f, "计划打开文件:" + file.getAbsolutePath());
             }
             f.remove(jp);

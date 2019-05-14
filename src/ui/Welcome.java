@@ -19,7 +19,7 @@ public class Welcome implements ActionListener
 		if(action_command=="start")
 		{
 			jframe.remove(jpanel);
-			Account cashier=new Account(jframe);
+			Account account=new Account(jframe);
 		}
 		else if(action_command=="exit")
 		{
