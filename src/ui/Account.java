@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileFilter;
 
+
 import ui.Plate_util;
 
 public class Account  implements ActionListener
@@ -122,5 +123,9 @@ public class Account  implements ActionListener
 	        b_open.addActionListener(this);
 	        b_open.setActionCommand("open_file");
 	        jp.add(b_open);      
+	 }
+	 public static void main(String[] args)
+	 {
+		 
 	 }
 }
