@@ -23,7 +23,7 @@ public class Account  implements ActionListener
 {
 	public static int width =800, height = 600, num_plate = 7, plate_w = 100, plate_h = 100;
     public static String[] colors = { "blue", "green", "purple", "yellow", "orange", "red", "coffee" };
-    public static String[] colors_CN = { "À¶É«", "ÂÌÉ«", "×ÏÉ«", "»ÆÉ«", "³ÈÉ«", "ºìÉ«", "¿§·È" };
+    public static String[] colors_CN = { "è“è‰²", "ç»¿è‰²", "ç´«è‰²", "é»„è‰²", "æ©™è‰²", "çº¢è‰²", "å’–å•¡" };
     public static int[] prices = { 8, 10, 12, 16, 18, 20, 24 };
     JFrame f;
     JPanel jp;
@@ -59,7 +59,11 @@ public class Account  implements ActionListener
             File file = fc.getSelectedFile();
             if (returnVal == JFileChooser.APPROVE_OPTION) 
             {
+<<<<<<< HEAD
 //                JOptionPane.showMessageDialog(f, "¼Æ»®´ò¿ªÎÄ¼ş:" + file.getAbsolutePath());
+=======
+//                JOptionPane.showMessageDialog(f, "è®¡åˆ’æ‰“å¼€æ–‡ä»¶:" + file.getAbsolutePath());
+>>>>>>> origin/master
 //                File f=fc.getSelectedFile();    
 //                String filepath=f.getPath();
                 String file_path=file.getAbsolutePath();
@@ -93,19 +97,19 @@ public class Account  implements ActionListener
 	        JLabel[] lab_pr = new JLabel[num_plate];
 	        for (int i = 0; i < 4; i++) 
 	        {
-	            lab_pr[i] = new JLabel(colors_CN[i] + ":" + prices[i] + "Ôª");
+	            lab_pr[i] = new JLabel(colors_CN[i] + ":" + prices[i] + "å…ƒ");
 	            lab_pr[i].setForeground(Color.black);
 	            lab_pr[i].setBounds(width / 2 + (i - 2) * (plate_w * 3 / 2) + 15, plate_h + 15, plate_w, plate_h);
-	            lab_pr[i].setFont(new Font("ºÚÌå", Font.PLAIN, 18));
+	            lab_pr[i].setFont(new Font("é»‘ä½“", Font.PLAIN, 18));
 	            jp.add(lab_pr[i]);
 	        }
 	        for (int i = 4; i < 7; i++) 
 	        {
-	            lab_pr[i] = new JLabel(colors_CN[i] + ":" + prices[i] + "Ôª");
+	            lab_pr[i] = new JLabel(colors_CN[i] + ":" + prices[i] + "å…ƒ");
 	            lab_pr[i].setForeground(Color.black);
 	            lab_pr[i].setBounds(width / 2 - plate_w / 2 + (i - 5) * (plate_w * 3 / 2) + 15, 3 * plate_h + 15, plate_w,
 	                    plate_h);
-	            lab_pr[i].setFont(new Font("ºÚÌå", Font.PLAIN, 18));
+	            lab_pr[i].setFont(new Font("é»‘ä½“", Font.PLAIN, 18));
 	            jp.add(lab_pr[i]);
 	        }
 	        jp.repaint();
@@ -128,14 +132,14 @@ public class Account  implements ActionListener
 	                    plate_h);
 	        }
 	        // ---------------add buttons---------------
-	        JButton b_quit = new JButton("ÍË³ö");
-	        b_quit.setFont(new Font("ËÎÌå", Font.BOLD, 16));
+	        JButton b_quit = new JButton("é€€å‡º");
+	        b_quit.setFont(new Font("å®‹ä½“", Font.BOLD, 16));
 	        b_quit.setBounds(600, height * 3 / 4, 100, 50);
 	        b_quit.addActionListener(this);
 	        b_quit.setActionCommand("exit");
 	        jp.add(b_quit);
-	        JButton b_open = new JButton("Ñ¡ÔñÍ¼Æ¬");
-	        b_open.setFont(new Font("ËÎÌå", Font.BOLD, 14));
+	        JButton b_open = new JButton("é€‰æ‹©å›¾ç‰‡");
+	        b_open.setFont(new Font("å®‹ä½“", Font.BOLD, 14));
 	        b_open.setBounds(475, height * 3 / 4, 100, 50);
 	        b_open.addActionListener(this);
 	        b_open.setActionCommand("select_file");
