@@ -59,7 +59,7 @@ public class Account  implements ActionListener
             File file = fc.getSelectedFile();
             if (returnVal == JFileChooser.APPROVE_OPTION) 
             {
-                JOptionPane.showMessageDialog(f, "计划打开文件:" + file.getAbsolutePath());
+//                JOptionPane.showMessageDialog(f, "计划打开文件:" + file.getAbsolutePath());
 //                File f=fc.getSelectedFile();    
 //                String filepath=f.getPath();
                 String file_path=file.getAbsolutePath();

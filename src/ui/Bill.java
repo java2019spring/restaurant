@@ -36,6 +36,13 @@ public class Bill implements ActionListener
 
 	}
 
+//	Bill()
+//	{
+//		jframe=new JFrame();
+//		int[] num_list= {0,0,0,0,0,0,0};
+//		String file_path="./plate/4.png";
+//		Bill(jframe,num_list,file_path);
+//	}
 	Bill(JFrame _jframe,int[] _num_list,String _file_path)
 	{
 		String img_path=_file_path;
@@ -56,18 +63,18 @@ public class Bill implements ActionListener
 		ImageIcon imageicon=new ImageIcon(img_path);
 	
 		JLabel img_label=new JLabel(imageicon);
-		img_label.setBounds(10,100,300,300);
+		img_label.setBounds(10,100,480,270);
 		JLabel label_tot_price=new JLabel(str_tot_price);
 		Font font = new Font("Serief", Font.ITALIC + Font.BOLD, 30);
 		label_tot_price.setFont(font);
-		label_tot_price.setBounds(460,350,300,100);
+		label_tot_price.setBounds(600,350,300,100);
 		JTextArea bill_textarea=new JTextArea(str_bill);
 		bill_textarea.setEditable(false);
 		bill_textarea.setFont(font);
-		bill_textarea.setBounds(460,50,300,300);
+		bill_textarea.setBounds(600,50,150,300);
 		JButton confirm_button=new JButton("х╥хо");
 		confirm_button.setFont(font);
-		confirm_button.setBounds(500,450,100,50);
+		confirm_button.setBounds(600,450,100,50);
 		confirm_button.addActionListener(this);
 				
 	
@@ -89,6 +96,10 @@ public class Bill implements ActionListener
 		SwingUtilities.updateComponentTreeUI(jframe);
 		
 	}
+//	public static void main()
+//	{
+//		new Bill();
+//	}
 
 }
 

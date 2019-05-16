@@ -84,11 +84,11 @@ public class Welcome implements ActionListener
         b_quit.setActionCommand("exit");
         jpanel.add(b_quit);
         // -----------add background------------
-        ImageIcon imgicon_1 = new ImageIcon("bg.jpg");
+        ImageIcon imgicon_1 = new ImageIcon("imgs/bg.jpg");
         JLabel label_1 = new JLabel(imgicon_1);
         jpanel.add(label_1, new Integer(Integer.MIN_VALUE));
         label_1.setBounds(width / 2, 0, width / 2, height / 2);
-        ImageIcon imgicon_2 = new ImageIcon("bg2.jpg");
+        ImageIcon imgicon_2 = new ImageIcon("imgs/bg2.jpg");
         JLabel label_2 = new JLabel(imgicon_2);
         jpanel.add(label_2, new Integer(Integer.MIN_VALUE));
         label_2.setBounds(0, height / 2, width / 2, height / 2);
