@@ -9,75 +9,50 @@ import ui.Plate_util;
 
 public class Bill implements ActionListener
 {
+	static String[] colors = { "blue", "green", "purple", "yellow", "orange", "red", "coffee" };
+	static String[] colors_CN = { "蓝色", "绿色", "紫色", "黄色", "橙色", "红色", "咖啡" };
+    static int[] prices = { 8, 10, 12, 16, 18, 20, 24 };
+    static int color_type_num=7;
+	
+    
 	JFrame jframe;
 	JPanel jpanel;
+	int tot_price;
+	
+	int calc_total_price(int[] _num_list)
+	{
+		int tot_price=0;
+		for(int i=0;i<color_type_num;++i)
+			tot_price+=_num_list[i]*prices[i];
+		return tot_price;
+	}
+	
+	
 	public void actionPerformed(ActionEvent e)
 	{
 
 		jframe.remove(jpanel);
-		Cashier cashier=new Cashier(jframe);
+		Cashier cashier=new Cashier(jframe,tot_price);
 
 	}
-	Bill()
-	{
-		String img_path="imgs/cappadocia.jpg";
-		jframe=new JFrame("Bill");
-		jpanel=new JPanel();
-		String str_bill="";
-		str_bill+="Blue plate: 1\n";
-		str_bill+="Yellow plate: 1\n";
-//		str_bill+="</body></html>";
-		
-		int tot_price=0;
-		String str_tot_price="TOTAL PRICE: "+String.valueOf(tot_price);
-		ImageIcon imageicon=new ImageIcon(img_path);
 
-		JLabel img_label=new JLabel(imageicon);
-		img_label.setBounds(10,100,300,300);
-		JLabel label_tot_price=new JLabel(str_tot_price);
-		Font font = new Font("Serief", Font.ITALIC + Font.BOLD, 30);
-		label_tot_price.setFont(font);
-		label_tot_price.setBounds(420,380,300,50);
-		JTextArea bill_textarea=new JTextArea(str_bill);
-		bill_textarea.setEditable(false);
-		bill_textarea.setFont(font);
-		bill_textarea.setBounds(460,50,300,200);
-		
-		JButton confirm_button=new JButton("确认");
-		confirm_button.setFont(font);
-		confirm_button.setBounds(500,400,100,50);
-		confirm_button.addActionListener(this);
-				
-
-		jpanel.add(img_label);
-		jpanel.add(bill_textarea);
-		jpanel.add(label_tot_price);
-		jpanel.add(confirm_button);
-		jpanel.setLayout(null);
-		jpanel.setSize(800,600);
-		jpanel.setLocation(0,0);
-		
-		jframe.add(jpanel,BorderLayout.CENTER);
-		jframe.setSize(800,600);
-		jframe.setLocation(0,0);
-		jframe.setLayout(null);
-		jframe.setVisible(true);
-		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
-	}
-	Bill(JFrame _jframe)
+	Bill(JFrame _jframe,int[] _num_list,String _file_path)
 	{
-		String img_path="imgs/cappadocia.jpg";
+		String img_path=_file_path;
 		jframe=_jframe;
 		jpanel=new JPanel();
 		String str_bill="";
-		str_bill+="Blue plate: 1\n";
-		str_bill+="Yellow plate: 1\n";
-	//	str_bill+="</body></html>";
+//		str_bill+="Blue plate: 1\n";
+//		str_bill+="Yellow plate: 1\n";
+		for(int i=0;i<color_type_num;++i)
+		{
+			str_bill+=colors_CN[i]+" "+String.valueOf(_num_list[i])+"\n";
+		}
 		
-		int tot_price=0;
-		String str_tot_price="TOTAL PRICE: "+String.valueOf(tot_price);
+		
+		
+		tot_price=calc_total_price(_num_list);
+		String str_tot_price="总价: "+String.valueOf(tot_price);
 		ImageIcon imageicon=new ImageIcon(img_path);
 	
 		JLabel img_label=new JLabel(imageicon);

@@ -124,7 +124,7 @@ public class Welcome implements ActionListener
 	public static void main(String[] args)
 	{
 //		front.p_per_disk("red");
-	new Welcome();
+		new Welcome();
 		//Plate_util plate_util=new Plate_util();
 		//plate_util.p_per_disk("red");
 	}

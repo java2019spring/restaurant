@@ -10,18 +10,37 @@ import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 import java.util.*;
 
-public class Recognzie {
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.filechooser.FileFilter;
+
+public class Recognize 
+{
 	
 	public static int pos[] = {0, 5, 2, 3, 1, 6, 4};
 	public static int prices[] = {8, 20, 12, 16, 10, 24, 18};
 	public static int arg[][];
 	public static Mat src_img;
 	
-	static {
+	static 
+	{
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 	}
 	
-	public static Mat findcircle(Mat img, int[] args) {
+	public static Mat findcircle(Mat img, int[] args) 
+	{
 		Mat img_tmp = new Mat(img.rows(), img.cols(), CvType.CV_8UC3);
 		Mat img_HSV = new Mat(img.rows(), img.cols(), CvType.CV_8UC3);
 		List<Mat> img_split = new ArrayList<Mat>();
@@ -32,7 +51,8 @@ public class Recognzie {
 		Imgproc.cvtColor(img, img_tmp, Imgproc.COLOR_RGB2HSV);
 		int cnt = 0;
 		Core.split(img_tmp, img_split);
-		for (Iterator<Mat> it = img_split.iterator(); it.hasNext();) {
+		for (Iterator<Mat> it = img_split.iterator(); it.hasNext();) 
+		{
 			img_arr[cnt] = (it.next()).clone();
 			cnt += 1;
 		}
@@ -60,10 +80,12 @@ public class Recognzie {
 		Mat element = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(5, 5));
 		Imgproc.dilate(img_tmp, img_tmp, element, new Point(-1, -1), 1);
 		
-		if (cnt == 3) {
+		if (cnt == 3)
+		{
 			Imgcodecs.imwrite("data\\check_result.jpg", img_tmp);
 		}
-		else {
+		else 
+		{
 			System.out.println(cnt);
 		}
 		
@@ -73,7 +95,8 @@ public class Recognzie {
 		
 		int Num = circles.cols();//System.out.println(circles.cols());
 		Imgproc.cvtColor(img_HSV, img_HSV, Imgproc.COLOR_HSV2RGB);
-		for (int i = 0; i < circles.cols(); i++) {
+		for (int i = 0; i < circles.cols(); i++) 
+		{
 			double[] vCircle = circles.get(0, i);
 			
 			Point center = new Point(vCircle[0], vCircle[1]);
@@ -89,7 +112,8 @@ public class Recognzie {
 		return img_HSV;
 	}
 	
-	public static int findCircleNum(Mat img, int[] args) {
+	public static int findCircleNum(Mat img, int[] args) 
+	{
 		Mat img_tmp = new Mat(img.rows(), img.cols(), CvType.CV_8UC3);
 		Mat img_HSV = new Mat(img.rows(), img.cols(), CvType.CV_8UC3);
 		List<Mat> img_split = new ArrayList<Mat>();
@@ -100,7 +124,8 @@ public class Recognzie {
 		Imgproc.cvtColor(img, img_tmp, Imgproc.COLOR_RGB2HSV);
 		int cnt = 0;
 		Core.split(img_tmp, img_split);
-		for (Iterator<Mat> it = img_split.iterator(); it.hasNext();) {
+		for (Iterator<Mat> it = img_split.iterator(); it.hasNext();) 
+		{
 			img_arr[cnt] = (it.next()).clone();
 			cnt += 1;
 		}
@@ -129,7 +154,8 @@ public class Recognzie {
 		
 		int Num = circles.cols();//System.out.println(circles.cols());
 		Imgproc.cvtColor(img_HSV, img_HSV, Imgproc.COLOR_HSV2RGB);
-		for (int i = 0; i < circles.cols(); i++) {
+		for (int i = 0; i < circles.cols(); i++) 
+		{
 			double[] vCircle = circles.get(0, i);
 			
 			Point center = new Point(vCircle[0], vCircle[1]);
@@ -144,7 +170,8 @@ public class Recognzie {
 		return Num;
 	}
 	
-	public static void init(String dataPath) {
+	public static void init(String dataPath) 
+	{
 		src_img = Imgcodecs.imread(dataPath);
 		arg = new int[9][9];
 		//arg:iLowH, iHighH, iLowS, iHighS, iLowV, iHighV, Mindist, para1, para2
@@ -177,12 +204,14 @@ public class Recognzie {
 		arg[8][4] = 20; arg[8][5] = 255; arg[8][6] = 10; arg[8][7] = 200; arg[8][8] = 43;
 	}
 	
-	public static int[] calc_total(String dataPath) {
+	public static int[] calc_total(String dataPath) 
+	{
 		init(dataPath);
 		
 		int Sum = 0;
 		int Cnt[] = new int[7];
-		for (int i = 1; i < 8; i++) {
+		for (int i = 1; i < 8; i++)
+		{
 			int Num = findCircleNum(src_img, arg[i]);
 			Sum += prices[i-1]*Num;
 			Cnt[pos[i-1]] = Num;
@@ -190,7 +219,17 @@ public class Recognzie {
 		return Cnt;
 	}
 	
-	public static void main(String[] args) {
+	Recognize(JFrame _jframe,String _file_path)
+	{
+		int Num[] = calc_total(_file_path);
+		for (int i = 0; i < 7; i++)
+			System.out.println(Num[i]);
+		System.out.println();
+		Bill bill=new Bill(_jframe,Num,_file_path);
+	}
+	
+	public static void main(String[] args) 
+	{
 		//init("data\\disks\\test\\4.png");
 		int Num[] = calc_total("plate/2.png");
 		for (int i = 0; i < 7; i++)

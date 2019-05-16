@@ -13,13 +13,13 @@ class Cashier
 	Cashier()
 	{
 		JFrame jf=new JFrame();
-		new Cashier(jf);
+		new Cashier(jf,0);
 	}
-	Cashier(JFrame _jframe)
+	Cashier(JFrame _jframe,int _total_price)
 	{
 		jframe=_jframe;
 
-		int int_price=0;
+		int int_price=_total_price;
 		String qr_path="imgs/qr_hello.png";
 		
 //		JFrame jframe=new JFrame("Cashier");

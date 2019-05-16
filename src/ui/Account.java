@@ -37,34 +37,47 @@ public class Account  implements ActionListener
         {
             public String getDescription() 
             {
-                return ".jpg";
+                return ".jpg,.png";
             }
 
             public boolean accept(File f) 
             {
-                return f.isDirectory() || f.getName().toLowerCase().endsWith(".jpg");
+            	boolean end_jpg=f.getName().toLowerCase().endsWith(".jpg");
+            	boolean end_png=f.getName().toLowerCase().endsWith(".png");
+                return f.isDirectory() || end_jpg||end_png;
             }
         });
+        
     	String action_command=e.getActionCommand();
 		if(action_command=="exit")
 		{
 			System.exit(0);
-		}else
+		}
+		else if(action_command=="select_file");
 		{
 			int returnVal = fc.showOpenDialog(f);
             File file = fc.getSelectedFile();
             if (returnVal == JFileChooser.APPROVE_OPTION) 
             {
                 JOptionPane.showMessageDialog(f, "计划打开文件:" + file.getAbsolutePath());
+//                File f=fc.getSelectedFile();    
+//                String filepath=f.getPath();
+                String file_path=file.getAbsolutePath();
+                f.remove(jp);
+                Recognize recognize= new Recognize(f,file_path);
             }
-            f.remove(jp);
-            Bill bill= new Bill(f);
+            else
+            {
+            	
+            }
+
             
 		}
 
 
 	}
-	 Account(JFrame fff) {
+	 Account(JFrame fff) 
+	 {
 
 		 	f=fff;
 	        // -------------init------------
@@ -78,14 +91,16 @@ public class Account  implements ActionListener
 	        System.out.println("accounting");
 	        // -------------add prices--------------
 	        JLabel[] lab_pr = new JLabel[num_plate];
-	        for (int i = 0; i < 4; i++) {
+	        for (int i = 0; i < 4; i++) 
+	        {
 	            lab_pr[i] = new JLabel(colors_CN[i] + ":" + prices[i] + "元");
 	            lab_pr[i].setForeground(Color.black);
 	            lab_pr[i].setBounds(width / 2 + (i - 2) * (plate_w * 3 / 2) + 15, plate_h + 15, plate_w, plate_h);
 	            lab_pr[i].setFont(new Font("黑体", Font.PLAIN, 18));
 	            jp.add(lab_pr[i]);
 	        }
-	        for (int i = 4; i < 7; i++) {
+	        for (int i = 4; i < 7; i++) 
+	        {
 	            lab_pr[i] = new JLabel(colors_CN[i] + ":" + prices[i] + "元");
 	            lab_pr[i].setForeground(Color.black);
 	            lab_pr[i].setBounds(width / 2 - plate_w / 2 + (i - 5) * (plate_w * 3 / 2) + 15, 3 * plate_h + 15, plate_w,
@@ -97,13 +112,15 @@ public class Account  implements ActionListener
 	        // --------------add plates-------------
 	        ImageIcon[] im_p = new ImageIcon[num_plate];
 	        JLabel[] lab_p = new JLabel[num_plate];
-	        for (int i = 0; i < 4; i++) {
+	        for (int i = 0; i < 4; i++) 
+	        {
 	            im_p[i] = new ImageIcon("plate/" + colors[i] + ".jpg");
 	            lab_p[i] = new JLabel(im_p[i]);
 	            jp.add(lab_p[i], new Integer(Integer.MIN_VALUE));
 	            lab_p[i].setBounds(width / 2 + (i - 2) * (plate_w * 3 / 2), plate_h / 2, plate_w, plate_h);
 	        }
-	        for (int i = 4; i < 7; i++) {
+	        for (int i = 4; i < 7; i++) 
+	        {
 	            im_p[i] = new ImageIcon("plate/" + colors[i] + ".jpg");
 	            lab_p[i] = new JLabel(im_p[i]);
 	            jp.add(lab_p[i], new Integer(Integer.MIN_VALUE));
@@ -121,7 +138,7 @@ public class Account  implements ActionListener
 	        b_open.setFont(new Font("宋体", Font.BOLD, 14));
 	        b_open.setBounds(475, height * 3 / 4, 100, 50);
 	        b_open.addActionListener(this);
-	        b_open.setActionCommand("open_file");
+	        b_open.setActionCommand("select_file");
 	        jp.add(b_open);      
 	 }
 	 public static void main(String[] args)
